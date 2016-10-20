@@ -1,4 +1,6 @@
 <?php
+//tonen artikel compleet?
+
 	$artikels =  array(
 				array('id' => 0, 'titel' => 'McDonald\'s houdt mascotte binnen door horrorclowns',
 			   'datum' => '13/10/2016',
@@ -19,10 +21,11 @@
 				'alt' => 'afbeelding google adwords'));
 
 $displayTekst = '';
-$artikelApart = False;
+$artikelApart = false;
 
 if(isset($_GET['id'])){
-	$artikelApart = True;
+	$individueelArtikelId = $_GET['id'];
+	$artikelApart = true;
 }
 ?>
 <html>
@@ -52,13 +55,13 @@ if(isset($_GET['id'])){
 			<p><?php echo $artikel['datum'] ?></p>
 			<img src="<?php echo $artikel['afbeelding'] ?>"  alt="<?php echo $artikel['alt'] ?>"></img>
 		<p><?php echo (substr($artikel['inhoud'],0,50) . '...') ?> </p>
-			<a href="oplossing-get.php?id=<?php echo $id ?>">Lees meer</a>
+			<a href="opdracht-get.php?id=<?php echo $id ?>">Lees meer</a>
 			
 			</div>
 		<?php endforeach ?>
 		
 		<?php if($artikelApart): ?>
-		<?php echo $artikel[0]['inhoud'] ?>
+		<?php echo $artikels[$individueelArtikelId]['titel'] ?>
 		<?php endif ?>
 		</div>
 	</body>

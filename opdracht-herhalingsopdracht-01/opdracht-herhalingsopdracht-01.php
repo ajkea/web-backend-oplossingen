@@ -1,4 +1,6 @@
 <?php
+//zoeken fout lijn 46
+
 $iframeZichtbaar = False;
 $voorbeeldenBool = False;
 $opdrachtenBool = False;
@@ -25,10 +27,11 @@ if(isset($_GET['link']))
 
 if(isset($_GET['zoeken']))
 {
+	
 	$zoekenBool = True;
 	$zoekterm = $_GET['zoekterm'];
-	
-	searchFiles($zoekterm);
+	$map = realpath('../');
+	searchFiles($zoekterm, $map);
 	
 	
 }
@@ -38,7 +41,7 @@ function showList($bestandenPath){
 	return $filesString = implode('<br>',$files);
 }
 
-function searchFiles($zoekterm){
+function searchFiles($zoekterm, $map){
 	$voorbeeldenArray = showList($map);
 	$resultaten = array();
 	
@@ -49,7 +52,7 @@ function searchFiles($zoekterm){
 		if($gevonden !== false){
 			$resultaten[] = $voorbeeld;
 		}
-	}
+	}//glob
 	
 }
 

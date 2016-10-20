@@ -3,12 +3,14 @@
 
 	$password = 'geheim';
 	$username = 'hendrik';
+$isLoggedIn = false;
 	$bericht = '';
 
 if (isset($_POST['submit'])){
 	//$bericht = "verzonden";
 	if($_POST['gebruikersnaam'] == $username && $_POST['wachtwoord'] == $password){
-		$bericht = 'Het inloggen is gelukt,<br> <h2>welkom</h2>';
+		$bericht = 'Het inloggen is gelukt';
+		$isLoggedIn = true;
 	}
 	else{
 		$bericht = 'er is een fout gebeurt bij het inloggen, probeer het opnieuw.';
@@ -19,6 +21,8 @@ if (isset($_POST['submit'])){
 <head>
 </head>
 <body>
+	
+	<?php if (!$isLoggedIn): ?>
 	<h1>Inloggen</h1>
 	<form action='opdracht-post.php' method="POST">
 		<label>gebruikersnaam: (hendrik)</label>
@@ -28,7 +32,10 @@ if (isset($_POST['submit'])){
 		<br>
 		<input type='submit' name='submit' value='verzenden'>
 	</form>
-	<?php echo $bericht ?>
+	<?php else: ?>
+		<h1>Welkom</h1>
+		<?= $bericht ?>
+	<?php endif ?>
 </body>
 </html>
 
