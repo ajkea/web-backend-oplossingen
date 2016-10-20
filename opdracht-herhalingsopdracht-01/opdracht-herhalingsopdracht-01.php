@@ -19,6 +19,7 @@ if(isset($_GET['link']))
 		case 'opdrachten':	
 			$map = realpath('../');
 			$opdrachtenArray = ShowList($map);
+			$opdrachtenBool = true;
 			break;
 	}
 
@@ -27,16 +28,30 @@ if(isset($_GET['zoeken']))
 	$zoekenBool = True;
 	$zoekterm = $_GET['zoekterm'];
 	
+	searchFiles($zoekterm);
+	
+	
 }
 
 function showList($bestandenPath){
-	foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($bestandenPath)) as $filename)
-{
-        $array = "$filename\n";
-		return $array;
-}
+	$files = scandir($bestandenPath);
+	return $filesString = implode('<br>',$files);
 }
 
+function searchFiles($zoekterm){
+	$voorbeeldenArray = showList($map);
+	$resultaten = array();
+	
+	foreach($voorbeeldenArray as $voorbeeld)
+	{
+		$gevonden = strpos($voorbeeld, $zoekterm);
+		
+		if($gevonden !== false){
+			$resultaten[] = $voorbeeld;
+		}
+	}
+	
+}
 
 ?>
 <html>
@@ -67,8 +82,12 @@ function showList($bestandenPath){
 			<iframe = src='web-backend-cursus.pdf'></iframe>
 		<?php endif ?>
 		
-		<?php if($voorbeeldenBool || $opdrachtenBool): ?>
+		<?php if($voorbeeldenBool): ?>
 		<?php echo $voorbeeldenArray ?>
+		<?php endif ?>
+		
+		<?php if($opdrachtenBool): ?>
+		<?php echo $opdrachtenArray ?>
 		<?php endif ?>
 	</body>
 </html>
