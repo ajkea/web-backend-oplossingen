@@ -14,25 +14,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>oplossing classes-begin</title>
 
 	<style>
-	
-	table
-	{
-		border-collapse:collapse;
-
-	}
 
 	td
 	{
 		padding:6px;
 		border:1px solid #666666;
-	}
-
-	td:last-child
-	{
-		text-align:right;
 	}
 
 	</style>
