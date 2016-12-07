@@ -1,0 +1,12 @@
+<section>
+	
+	<?php foreach ( $artikels as $id => $article): ?>
+		<article>
+			<h1><?= $article[ 'title' ] ?></h1>
+			<p><?= $article[ 'body' ] ?></p>
+			<p><?= $article[ 'tags' ] ?></p>
+			<a href="index.php?article=<?= $id ?>">meer...</a>
+		</article>
+	<?php endforeach ?>
+
+</section>
