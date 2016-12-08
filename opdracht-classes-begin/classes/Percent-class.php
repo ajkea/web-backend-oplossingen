@@ -22,7 +22,7 @@
 			}
 			elseif ( $this->hundred < 0 )
 			{
-				$this->nominal	=	"negative";
+				$this->nominal	=	"negatief";
 			}	
 		}
 
