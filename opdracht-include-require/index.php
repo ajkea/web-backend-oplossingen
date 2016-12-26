@@ -1,35 +1,13 @@
 <?php
 
+$nummer = 0;
+$artikels = array(array('titel' => "Man slaat paard",'tekst' => "Een man heeft gisteren een paard geslagen in oelegem. Het paard had ervoor al in de man zijn hand gebeten waarop hij reageerde en het paard met de vlakke hand sloeg.",'tags' => array("man","paard")),
+	array('titel' => "Paard bijt man",'tekst' => "Een paard heeft gisteren een man gebeten in Oelegem. De man had ervoor al in het paard zijn gezicht geslagen waarop het paard reageerde en de man beet.",'tags' => "geweld"),
+	array('titel' => "Een ander artikel",'tekst' => "Een artikel dat over niets gaat, het dient enkel ter opvulling omdat ik momenteel geen internet heb en dus niets kan opzoeken.",'tags' => array("internet","inspiratie","tekst")));
 
-	$artikels =	array(
-					array(	'title'	=> 'Title article 1',
-							'body' 	=> 'Body article 1',
-							'tags' 	=> 'Keywords article 1',
-					),
-					array(	'title'	=> 'Title article 2',
-							'body' 	=> 'Body article 2',
-							'tags' 	=> 'Keywords article 2',
-					),
-					array(	'title'	=> 'Title artikel 3',
-							'body' 	=> 'Body artikel 3',
-							'tags' 	=> 'Keywords article 3',
-					)
-				);
+include "view/header-partial.html";
+include "view/body-partial.html";
+	$artikel	=	$artikels[ $_GET[ 'artikel' ] ];
+include "view/footer-partial.html";
 
-	if ( isset( $_GET[ 'article' ] ) )
-	{
-		$article	=	$artikels[ $_GET[ 'article' ] ];
-	}
-
-
-	include 'view/header-partial.html';
-	if ( !isset( $_GET[ 'article' ] ) )
-	{
-		include 'view/artikels-partial.html';
-	}
-	else
-	{
-		include 'view/body-partial.html';
-	}
-	include 'view/footer-partial.html';
 ?>
