@@ -1,53 +1,50 @@
 <?php
+	include 'classes/Percent.php';
 
-	function __autoload( $className ) {
-	    include 'classes/' . $className . '-class.php';
-	}
+$getal1 = 50;
+$getal2 = 100;
+$percent = new Percent($getal1,$getal2);
 
-	$new	=	150;
-	$unit	=	100;
-
-	$percent = new Percent( $new, $unit );
 
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
-	<title>oplossing classes-begin</title>
-
+	<title></title>
 	<style>
-
-	td
-	{
-		padding:6px;
-		border:1px solid #666666;
+	table{
+		border-style: solid;
 	}
-
+	td{
+		border-style: solid;
+	}
 	</style>
-
 </head>
 <body>
-
+<?php echo "het eerste getal is: " . $getal1 . " en het 2de getal is: " . $getal2 ?>
 <table>
-	<caption>Hoeveel procent is <?php echo $new ?> van <?php echo $unit ?>?</caption>
-	<tr>
-		<td>Absoluut</td>
-		<td><?php echo $percent->absolute ?></td>
-	</tr>
-	<tr>
-		<td>Relatief</td>
-		<td><?php echo $percent->relative ?></td>
-	</tr>
-	<tr>
-		<td>Geheel getal</td>
-		<td><?php echo $percent->hundred ?>%</td>
-	</tr>
-	<tr>
-		<td>Nominaal</td>
-		<td><?php echo $percent->nominal ?></td>
-	</tr>
+<tr><td>absolute waarde</td>
+<td>
+<?php echo $percent->absolute ?>
+</td>
+<tr>
+<td>relative waarde</td>
+<td>
+<?php echo $percent->relative ?>
+</td>
+</tr>
+<tr>
+<td>percentage</td>
+<td>
+<?php echo $percent->hundred ?>
+</td>
+</tr>
+<tr>
+<td>Nominale waarde</td>
+<td>
+<?php echo $percent->nominal ?>
+</td>
+</tr>
 </table>
-
 </body>
 </html>
