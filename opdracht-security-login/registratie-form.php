@@ -1,18 +1,6 @@
 <?php
 	session_start();
-
 	require_once( 'registratie-process.php');
-
-if(isset($_POST['generate'])){
-
-
-	$test = generateRandomString();
-
-	
-
-	echo $test;
-
-}
 ?>
 <!DOCTYPE html>
 <html>
@@ -20,13 +8,13 @@ if(isset($_POST['generate'])){
 		<title>Opdracht security login</title>
 	</head>
 	<body>
+	<h2><?php echo $_SESSION['notification'] ?></h2>
 		<h1>Registreren</h1>
-	<?php $test ?>
-		<form action="index.php" method="post">
+		<form action="registratie-form.php" method="post">
 			<p>email</p>
-			<input type="text" name="email">
+			<input type="text" name="email" value="<?= $_SESSION['email'] ?>">
 			<p>paswoord</p>
-			<input type="text" name="paswoord">
+			<input type="text" name="password" value="<?= $_SESSION['password'] ?>">
 			<button name="generate">Genereer een paswoord</button>
 			<button name="register">Registreer</button>
 		</form>
