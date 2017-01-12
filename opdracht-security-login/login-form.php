@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once('login-process.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -14,7 +15,7 @@ session_start();
 		<input type="type" name="email">
 		<p>paswoord</p>
 		<input type="text" name="password">
-		<input type="submit" name="login">
+		<input type="submit" name="login" value="login">
 	</form>
 
 	<p>Nog geen account? Maak er dan eentje aan op de <a href="registratie-form.php">registratiepagina</a>
