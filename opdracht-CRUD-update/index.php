@@ -9,7 +9,8 @@ try{
 	$db = new PDO("mysql:host=localhost;dbname=bieren",'root','');
 #confirm-delete/delete
 	if (isset($_POST['delete'])){
-
+		$queryDelete = 'DELETE FROM brouwers WHERE brouwernr = :brouwernr';
+	
 		$delete->bindValue(':brouwernr',$_POST['delete']);
 		$delete = $db->prepare($queryDelete);
 		$delete->execute();	
@@ -23,6 +24,8 @@ try{
 	}
 #confirm-edit
 	if (isset($_POST['updateBtn'])){
+		$queryUpdate = 'UPDATE brouwers SET brnaam= :brnaam,adres=:adres,postcode=:postcode,gemeente=:gemeente,omzet=:omzet WHERE brouwernr=:brouwernr';
+
 		$update = $db->prepare($queryUpdate);
 
 		$update->bindValue(':brouwernr',$_POST['brouwernr']);
@@ -33,7 +36,8 @@ try{
 		$update->bindValue(':omzet', $_POST['omzet']);
 		$update->execute();
 	}
-
+	$querySelect = 'SELECT * FROM brouwers';
+	
 	$resultaten = $db->prepare($querySelect);
 	$resultaten->execute();
 
