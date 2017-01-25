@@ -49,7 +49,6 @@ session_start();
 </head>
 <body>
 	<h1>Dashboard</h1>
-	<?php echo $_SESSION['email'] ?>
 	<a href="logout.php">Uitloggen</a>
 </body>
 </html>

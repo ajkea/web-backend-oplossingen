@@ -8,7 +8,7 @@
 		<title>Opdracht security login</title>
 	</head>
 	<body>
-	<h2><?php echo $_SESSION['notification'] ?></h2>
+	<h2><?php if(isset($_SESSION['notification'])){echo $_SESSION['notification'];} ?></h2>
 		<h1>Registreren</h1>
 		<form action="registratie-form.php" method="post">
 			<p>email</p>
@@ -18,5 +18,6 @@
 			<button name="generate">Genereer een paswoord</button>
 			<button name="register">Registreer</button>
 		</form>
+		<a href="login-form.php">loginpagina</a>
 	</body>
 </html>

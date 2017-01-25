@@ -2,18 +2,27 @@
 
 class htmlBuilder{
 
-		public function buildheader(){
-			include '../html/header.partial.php';
-			include '../css/global.css'
+		public $header;
+		public $body;
+		public $footer;
+
+		public  function __construct($header,$body,$footer){
+			$this->header = 'html/'.$header;
+			$this->body = 'html/'.$body;			
+			$this->footer = 'html/'.$footer;
 		}
 
+		public function buildHeader(){
+			include $this->header;
+		}
+
+
 		public function buildBody(){
-			include '../html/body.partial.php';
+			include $this->body;
 		}
 
 		public function buildFooter(){
-			include '../html/footer.partial.php';
-			include '../js/script.js'
+			include $this->footer;
 		}
 }
 ?>

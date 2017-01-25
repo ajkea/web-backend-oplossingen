@@ -1,20 +1,8 @@
 <?php
 
-if(isset($_SESSION['email'])){}
-	else
-	{
-		$_SESSION['email'] = "";
-	}
-
-if(isset($_SESSION['password'])){}
-	else
-	{
-		$_SESSION['password'] = "";
-	}
-
 #database + queries
 function connectDatabase(){
-	$db = new PDO("mysql:host=localhost;dbname=opdracht-security-login",'root','');
+	$db = new PDO("mysql:host=localhost;dbname=opdracht-crud-cms",'root','');
 	return $db;
 	}
 	$queryInsert = "INSERT INTO `users`(`email`, `salt`, `hashed_password`, `last_login_time`) VALUES (:email,:salt,:hashed_password,:lastLoginTime)";
@@ -145,6 +133,7 @@ function connectDatabase(){
 if(isset($_POST['generate'])){
 	$randomPassword = generatePassword(8);
 	$_SESSION['password'] = $randomPassword;
+	echo $randomPassword;
 }
 
 if(isset($_POST['register'])){
@@ -158,7 +147,7 @@ if(isset($_POST['register'])){
 function register(){
 	$realEmail = checkEmail();
 	getFormData();
-	$db = new PDO("mysql:host=localhost;dbname=opdracht-security-login",'root','');
+	$db = new PDO("mysql:host=localhost;dbname=opdracht-crud-cms",'root','');
 	$db = connectDatabase();
 	if($realEmail){
 	$uniqueEmail = emailDoubleCheck($_SESSION['email'], $db);

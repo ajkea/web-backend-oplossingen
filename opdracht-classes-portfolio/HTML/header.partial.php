@@ -9,8 +9,6 @@
 		<style>		
 			
 		</style>
-		
-		<?php echo $cssLinks ?>
 </head>
 
 <body>
